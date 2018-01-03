@@ -1,4 +1,6 @@
-const isOffensive = text => typeof text === 'string' && /(shit|fuck)/.test(text.toLowerCase())
+const defaultSwearList = require('./default-swear-list');
+
+const isOffensive = text => typeof text === 'string' && defaultSwearList.some(word => text.toLowerCase().includes(word))
 const reportWith = message => (context, node) => context.report(node, message)
 
 const bePoliteRule = {
